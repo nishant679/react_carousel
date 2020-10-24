@@ -21,7 +21,7 @@ reloding the images and quotes by changing the state of the react app. \
 I created a React component **Slider**. It contains three methods namely\ 
 **nextImage**\
 **prevImage**\
-**autoSlider**\
+**autoSlider** \
 
 First two methods are called by button onClick events while **autoSlider()** gets called \
 when **componentDidUpdate()** gets called. It is a react lifecycle method. initially I called \
