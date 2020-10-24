@@ -25,6 +25,7 @@ class Slider extends React.Component{
         super(props);
         this.nextImage = this.nextImage.bind(this);
         this.prevImage = this.prevImage.bind(this);
+        this.autoSlider = this.autoSlider.bind(this);
         this.state = {
             counter:0
         };
@@ -38,7 +39,28 @@ class Slider extends React.Component{
             "https://ik.imagekit.io/qs7wkx3a89/img5_IkEr6d1rCQ.jpg",
             "https://ik.imagekit.io/qs7wkx3a89/img3_VOEyA5rvs.jpg"
         ];
+
+        this.quote = [
+            "Every moment is a fresh beginning.",
+            "Never regret anything that made you smile.",
+            "Everything you can imagine is real.",
+            "What we think, we become. ",
+            "Tough times never last but tough people do.",
+            "Yesterday you said tomorrow. Just do it.",
+            "Hate comes from intimidation, love comes from appreciation."
+        ];
         
+    }
+
+    componentDidUpdate (){
+        setTimeout(()=> {
+            this.autoSlider();
+        }, 3000 )
+        
+    }
+
+    componentDidMount(){
+        this.autoSlider();
     }
 
     nextImage(e){
@@ -72,15 +94,44 @@ class Slider extends React.Component{
     }
     }
 
+    autoSlider(e){
+        setTimeout(()=>{
+            if(this.state.counter >0){
+                this.setState({
+                    counter : this.state.counter - 1
+                })
+            }
+            
+
+            else if(this.state.counter === 0){
+                this.setState({
+                    counter :  6
+                })
+            }
+            else if(this.state.counter < 7){
+                this.setState({
+                    counter : this.state.counter + 1
+                })
+            }
+
+            else if(this.state.counter === 6 ){
+                this.setState({
+                    counter : 0
+                })
+            }
+        }, 3000)
+
+    }
+
     render(){
         return (
             <div className = "slider"> 
-            <div className = "slide">
-                   <img src={this.imgUrl[this.state.counter]} alt="image not found"></img>
-                   {console.log(this.imgUrl[0])}
-                  </div>
-              <button id="next" onClick={this.nextImage} > NEXT </button>
-              <button id="prev" onClick={this.prevImage} > PREV </button>
+            <h1 class="quote">{this.quote[this.state.counter]}</h1>
+            <button id="prev" className="btn btn-left" onClick={this.prevImage} > PREV </button>
+            <img src={this.imgUrl[this.state.counter]} alt="image not found"></img>
+            <button id="next" className="btn btn-right" onClick={this.nextImage} > NEXT </button>
+            
+              
             </div>
         );
     }
