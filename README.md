@@ -7,7 +7,7 @@
 # Description
 This is a carousel developed using React.js \
 
-This main aim of the task was to test my react.js skills so, more imphasis \
+The main aim of the task was to test my react.js skills so, more imphasis \
 has been given to use react component and methods to implement the task.\ \
 
 CSS has been used for defining the layout only. \ \
